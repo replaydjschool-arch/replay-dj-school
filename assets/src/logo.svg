@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 65 655 375">
+  <defs>
+    <mask id="mP" maskUnits="userSpaceOnUse" x="0" y="0" width="720" height="500"><rect width="720" height="500" fill="#fff"/><polygon points="124,233 153,252 124,271" fill="#000" stroke="#000" stroke-width="14" stroke-linejoin="round"/></mask>
+    <mask id="mU" maskUnits="userSpaceOnUse" x="0" y="0" width="720" height="500"><rect width="720" height="500" fill="#fff"/><polygon points="485,262 462,296 508,296" fill="#000" stroke="#000" stroke-width="14" stroke-linejoin="round"/></mask>
+  </defs>
+  <polygon points="55,100 270,250 55,405" fill="#E8C93E" stroke="#E8C93E" stroke-width="60" stroke-linejoin="round" mask="url(#mP)"/>
+  <polygon points="480,150 335,358 636,358" fill="#fff" stroke="#fff" stroke-width="70" stroke-linejoin="round" mask="url(#mU)"/>
+</svg>
