@@ -157,6 +157,18 @@ header.top{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(10,10,10,.
 @media(max-width:1000px){.tgrid{grid-template-columns:1fr}}
 @media(max-width:560px){.teacher{grid-template-columns:1fr}.teacher .ph{min-height:240px}}
 
+
+.grp{font-size:20px;margin:56px 0 0;color:var(--y)}
+.grp+.cgrid{margin-top:20px}
+.otable{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.otable.two{margin-top:20px}
+.otable>div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:grid;gap:4px}
+.otable b{font-weight:600}.otable span{color:var(--mute);font-size:14px}.otable em{font:700 17px Unbounded;font-style:normal;color:var(--y);margin-top:6px}
+@media(max-width:860px){.otable{grid-template-columns:1fr}}
+.teacher .ph{overflow:hidden}.teacher .ph img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.gallery img{width:100%;height:100%;object-fit:cover;border-radius:var(--r);border:1px solid var(--line);aspect-ratio:3/4}
+.gallery img:first-child{grid-column:1/-1;aspect-ratio:16/10;object-position:center 60%}
 /* gear */
 .ggrid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:start}
 .gcats{display:grid;gap:22px;margin-top:28px}
@@ -269,15 +281,15 @@ footer.main a:hover{color:var(--y)}
   <div class="wrap">
     <span class="eyebrow">Школа діджеїнгу · Київ</span>
     <h1>Натисни <em>play</em><br>на своїй<br>діджей-історії</h1>
-    <p class="lead">REPLAY навчає діджеїнгу за авторською методикою Rad Royal: від першого мікса до виступу в клубі. Топове обладнання, викладачі-практики, перший урок — безкоштовно.</p>
+    <p class="lead">REPLAY навчає діджеїнгу за авторською методикою Rad Royal: від першого мікса до виступу в клубі. Топове обладнання Pioneer DJ, викладачі-практики, перший урок — безкоштовно.</p>
     <div class="cta">
       <a href="#contact" class="btn primary">Записатися на пробний урок</a>
       <a href="#courses" class="btn ghost">Дивитись курси</a>
     </div>
     <div class="stats">
-      <div><b>0 ₴</b><span>перший урок + екскурсія</span></div>
-      <div><b>1:1</b><span>індивідуальний формат</span></div>
-      <div><b>5–16</b><span>занять у курсі</span></div>
+      <div><b>2023</b><span>рік заснування школи</span></div>
+      <div><b>20%</b><span>студентів — в ефірі KISS FM</span></div>
+      <div><b>0 ₴</b><span>перший пробний урок</span></div>
     </div>
   </div>
 </section>
@@ -312,7 +324,9 @@ footer.main a:hover{color:var(--y)}
       <div class="perk">Практичні навички з першого уроку</div>
       <div class="perk">Рекомендації від викладачів</div>
       <div class="perk">Спільнота випускників</div>
-      <div class="perk">Сертифікат про проходження курсу</div>
+      <div class="perk">Диплом про проходження курсу</div>
+      <div class="perk">Знижка 5% на обладнання</div>
+      <div class="perk">Запис заняття залишається у твоєму телефоні</div>
     </div>
   </div>
 </section>
@@ -332,61 +346,84 @@ footer.main a:hover{color:var(--y)}
 <section class="alt" id="courses">
   <div class="wrap">
     <span class="eyebrow">Курси та ціни</span>
-    <h2>Обери свій трек</h2>
-    <p class="lead">Усі DJ-курси індивідуальні. Подарункові сертифікати — на будь-який курс.</p>
+    <h2>Обери викладача й рівень</h2>
+    <p class="lead">Перший пробний урок — безкоштовно. Усі курси — індивідуальні, з викладачем у live-форматі.</p>
+
+    <h3 class="grp">Курси з Rad Royal</h3>
     <div class="cgrid">
       <article class="course">
-        <h3>Intro</h3><p class="sub">5 занять · ознайомчий</p>
-        <ul><li>Інтерфейс CDJ та мікшера</li><li>Перший beatmatch і мікс двох треків</li><li>Підійде, щоб спробувати</li></ul>
-        <div class="price"><div><b>6 000 ₴</b><small>5 занять</small></div><a href="#contact">Записатися →</a></div>
+        <h3>Standard</h3><p class="sub">Твій старт за пультом</p>
+        <ul><li>16 годин занять + 4 години практики</li><li>Основи: теорія, кнопки, бітматчинг, Rekordbox</li><li>Диплом і знижка 5% на обладнання</li></ul>
+        <div class="price"><div><b>29 000 ₴</b><small>16 + 4 год</small></div><a href="#contact">Записатися →</a></div>
       </article>
       <article class="course hot">
         <span class="tag">Хіт</span>
-        <h3>Basic</h3><p class="sub">10 занять · з нуля</p>
-        <ul><li>CDJ + мікшер, beatmatch, EQ, loop, hot cue</li><li>Підбір треків і побудова сету</li><li>Підготовка USB і рекордбокс</li><li>Сертифікат за відвідування</li></ul>
-        <div class="price"><div><b>11 000 ₴</b><small>10 занять</small></div><a href="#contact">Записатися →</a></div>
+        <h3>Full</h3><p class="sub">Рівень, на якому починаєш мислити як діджей</p>
+        <ul><li>26 годин з Rad Royal + 4 години практики</li><li>Повний розбір обладнання: every button pressed</li><li>Rekordbox: Export + Performance Mode</li><li>Глибокий аналіз жанрів та ресурсів</li></ul>
+        <div class="price"><div><b>39 000 ₴</b><small>26 + 4 год</small></div><a href="#contact">Записатися →</a></div>
       </article>
       <article class="course">
-        <h3>Advanced</h3><p class="sub">15 занять · для тих, хто грає</p>
-        <ul><li>Складні переходи та ефекти</li><li>Робота із залом та енергією</li><li>Підготовка live-сету до виступу</li></ul>
-        <div class="price"><div><b>16 000 ₴</b><small>15 занять</small></div><a href="#contact">Записатися →</a></div>
-      </article>
-      <article class="course">
-        <h3>Author Method</h3><p class="sub">16 занять · авторська програма Rad Royal</p>
-        <ul><li>Індивідуальна програма під твій жанр</li><li>Максимальна глибина та супровід</li><li>Фінальний виступ і рекомендації</li></ul>
-        <div class="price"><div><b>28 000 ₴</b><small>16 занять</small></div><a href="#contact">Записатися →</a></div>
-      </article>
-      <article class="course">
-        <h3>Online</h3><p class="sub">10 занять · дистанційно</p>
-        <ul><li>Індивідуальні уроки онлайн</li><li>Практика на контролері вдома</li><li>Той самий підхід, що й офлайн</li></ul>
-        <div class="price"><div><b>10 000 ₴</b><small>10 занять</small></div><a href="#contact">Записатися →</a></div>
-      </article>
-      <article class="course">
-        <h3>Gift</h3><p class="sub">подарунковий сертифікат</p>
-        <ul><li>На будь-який курс</li><li>Красиве оформлення</li><li>Ідеальний подарунок для майбутнього діджея</li></ul>
-        <div class="price"><div><b>на суму курсу</b><small>будь-який номінал</small></div><a href="#contact">Замовити →</a></div>
+        <h3>Complete</h3><p class="sub">Це вже не курс — це трансформація</p>
+        <ul><li>36 годин з Rad Royal + практика</li><li>Back-to-back з Rad Royal, звод без Sync</li><li>Підтримка після курсу, допомога з першим виступом</li><li>Поради з кар'єри, контенту та бренду</li></ul>
+        <div class="price"><div><b>52 000 ₴</b><small>36 год + практика</small></div><a href="#contact">Записатися →</a></div>
       </article>
     </div>
-    <p class="note">Оплата частинами обговорюється індивідуально. Розклад підбираємо під тебе — рекомендуємо 2 заняття на тиждень.</p>
+    <div class="otable">
+      <div><b>Online Standard</b><span>18 год у live-форматі</span><em>29 000 ₴</em></div>
+      <div><b>Online Full</b><span>онлайн-версія Full</span><em>ціну уточнюйте</em></div>
+      <div><b>Online Complete</b><span>38 год у live-форматі</span><em>52 000 ₴</em></div>
+    </div>
+
+    <h3 class="grp">Курси з 2K DJ</h3>
+    <div class="cgrid">
+      <article class="course">
+        <h3>Standard</h3><p class="sub">Твій старт за пультом від 2K DJ</p>
+        <ul><li>16 годин занять + 4 години практики</li><li>Основи: теорія, кнопки, бітматчинг, Rekordbox</li><li>Диплом і знижка 5% на обладнання</li></ul>
+        <div class="price"><div><b>19 000 ₴</b><small>16 + 4 год</small></div><a href="#contact">Записатися →</a></div>
+      </article>
+      <article class="course">
+        <h3>Online Standard</h3><p class="sub">Старт з будь-якої точки світу</p>
+        <ul><li>18 годин авторських занять у live-форматі</li><li>Налаштування комп'ютера, обладнання та софту</li><li>Диплом і знижка 5% на обладнання</li></ul>
+        <div class="price"><div><b>19 000 ₴</b><small>18 год online</small></div><a href="#contact">Записатися →</a></div>
+      </article>
+      <article class="course">
+        <h3>Online Full</h3><p class="sub">Мислити як справжній діджей — навіть онлайн</p>
+        <ul><li>28 годин авторських онлайн-занять</li><li>Повний розбір обладнання та логіки пульта</li><li>Rekordbox: Export + Performance Mode</li></ul>
+        <div class="price"><div><b>29 000 ₴</b><small>28 год online</small></div><a href="#contact">Записатися →</a></div>
+      </article>
+    </div>
+
+    <h3 class="grp">Індивідуальні заняття · 2025–2026</h3>
+    <div class="otable two">
+      <div><b>Годинний урок з Rad Royal</b><span>можливий онлайн-формат</span><em>2 500 ₴</em></div>
+      <div><b>Від 5 одиниць</b><span>Rad Royal</span><em>2 300 ₴ / год</em></div>
+      <div><b>Від 10 одиниць</b><span>Rad Royal</span><em>2 100 ₴ / год</em></div>
+      <div><b>Годинний урок з 2K DJ</b><span>можливий онлайн-формат</span><em>1 700 ₴</em></div>
+      <div><b>Від 5 одиниць</b><span>2K DJ</span><em>1 650 ₴ / год</em></div>
+      <div><b>Від 10 одиниць</b><span>2K DJ</span><em>1 600 ₴ / год</em></div>
+    </div>
+    <p class="note">Подарункові сертифікати — на будь-який курс. Ціни актуальні станом на 2025–2026 рр.</p>
   </div>
 </section>
 
 <section id="program">
   <div class="wrap">
-    <span class="eyebrow">Програма курсу Basic</span>
-    <h2>Що ти вивчиш крок за кроком</h2>
+    <span class="eyebrow">Що ти отримаєш</span>
+    <h2>Навчання на рівні Standard</h2>
+    <p class="lead">Базовий курс — міцний фундамент. Після нього ти не просто «граєш музику», а починаєш її розуміти.</p>
     <div class="prog">
-      <div class="lesson"><b>01</b><div><h3>Знайомство з пультом</h3><p>CDJ, мікшер, навушники. Перший запуск треку.</p></div></div>
-      <div class="lesson"><b>02</b><div><h3>Beatmatch</h3><p>Синхронізація темпу на слух і по джогу.</p></div></div>
-      <div class="lesson"><b>03</b><div><h3>Мікс двох треків</h3><p>Фейдер, EQ, плавні переходи.</p></div></div>
-      <div class="lesson"><b>04</b><div><h3>Фразування</h3><p>Структура треку: інтро, брейк, дроп.</p></div></div>
-      <div class="lesson"><b>05</b><div><h3>Hot cue та loop</h3><p>Мітки, цикли та робота з петлями на CDJ.</p></div></div>
-      <div class="lesson"><b>06</b><div><h3>Ефекти</h3><p>Filter, echo, reverb — коли доречно, а коли ні.</p></div></div>
-      <div class="lesson"><b>07</b><div><h3>Підбір треків</h3><p>Тональності, енергія та жанрові переходи.</p></div></div>
-      <div class="lesson"><b>08</b><div><h3>Бібліотека та USB</h3><p>Рекордбокс, плейлисти, підготовка флешки до виступу.</p></div></div>
-      <div class="lesson"><b>09</b><div><h3>Побудова сету</h3><p>Драматургія, відкриття, кульмінація, фінал.</p></div></div>
-      <div class="lesson"><b>10</b><div><h3>Live-сет</h3><p>Фінальний виступ у студії та розбір разом із викладачем.</p></div></div>
+      <div class="lesson"><b>01</b><div><h3>Розуміти музику</h3><p>Базова теорія для справжнього діджея.</p></div></div>
+      <div class="lesson"><b>02</b><div><h3>Впевнено користуватися кнопками</h3><p>Ми не просто слухаємо — ми все пробуємо.</p></div></div>
+      <div class="lesson"><b>03</b><div><h3>Жанри та ресурси</h3><p>Орієнтуватися в жанрах і знати, де брати музику.</p></div></div>
+      <div class="lesson"><b>04</b><div><h3>Техніка безпеки</h3><p>Так, вона є й у діджеїнгу: без технічних проблем на сцені.</p></div></div>
+      <div class="lesson"><b>05</b><div><h3>Rekordbox</h3><p>Export mode і правильна підготовка флешки.</p></div></div>
+      <div class="lesson"><b>06</b><div><h3>Бітматчинг на слух</h3><p>Без опори на Sync.</p></div></div>
+      <div class="lesson"><b>07</b><div><h3>Чисті мікси</h3><p>Міксувати треки чисто і «кайфово».</p></div></div>
+      <div class="lesson"><b>08</b><div><h3>Ком'юніті школи</h3><p>Спільнота учнів і випускників REPLAY.</p></div></div>
+      <div class="lesson"><b>09</b><div><h3>Диплом</h3><p>Після проходження курсу.</p></div></div>
+      <div class="lesson"><b>10</b><div><h3>Бонус</h3><p>Знижка 5% на купівлю обладнання.</p></div></div>
     </div>
+    <p class="note">Запис офлайн-заняття залишається у твоєму телефоні — можна переглянути перед виступом.</p>
   </div>
 </section>
 
@@ -408,25 +445,25 @@ footer.main a:hover{color:var(--y)}
   <div class="wrap">
     <span class="eyebrow">Викладачі</span>
     <h2>Вчать ті, хто грає</h2>
-    <p class="lead">Невелика команда — зате кожен учень отримує максимум уваги.</p>
+    <p class="lead">Дві людини, які щодня за пультом — і навчають тому, що працює на реальних сценах.</p>
     <div class="tgrid">
       <article class="teacher">
-        <div class="ph"><svg viewBox="20 65 285 375"><use href="#gPlay"/></svg><small>фото Rad Royal</small></div>
+        <div class="ph"><img src="assets/radroyal.jpg" alt="Rad Royal" loading="lazy"></div>
         <div class="bd">
           <span class="role">Засновник · автор методики</span>
           <h3>Rad Royal</h3>
-          <p>Діджей і засновник REPLAY. Створив авторську методику, за якою навчаються всі учні школи.</p>
-          <ul><li>Курси Basic та Author Method</li><li>Робота з клубним обладнанням</li><li>Підготовка до виступів</li></ul>
+          <p>Євген Радулов. Від слухача сетів на topdj.ua до амбасадора Pioneer DJ (з 2022). У 2016-му залишив кар'єру юриста заради діджеїнгу, автор радіошоу «Groovy Nations» на DJFM. У 2023 році заснував REPLAY.</p>
+          <ul><li>Bel Etage, Saxon, HEAVEN Club, Alchemist Bar, BAO, Fenix, Mayak, White Nights</li><li>Власна музика в топ-чартах українських радіостанцій</li><li>Курси Standard, Full, Complete</li></ul>
           <a class="ig" href="https://instagram.com/radroyal" target="_blank" rel="noopener">@radroyal →</a>
         </div>
       </article>
       <article class="teacher">
-        <div class="ph"><svg viewBox="295 110 380 290"><use href="#gUp"/></svg><small>фото 2K DeeJay</small></div>
+        <div class="ph"><img src="assets/2kdj.jpg" alt="2K DeeJay" loading="lazy"></div>
         <div class="bd">
-          <span class="role">Викладач діджеїнгу</span>
+          <span class="role">Викладач · резидент KISS FM</span>
           <h3>2K DeeJay</h3>
-          <p>Практикуючий діджей. Допомагає пройти шлях від першого мікса до впевненого виступу.</p>
-          <ul><li>Курси Intro, Basic, Advanced</li><li>Техніка міксування та сет-білдинг</li><li>Індивідуальний підхід</li></ul>
+          <p>Олександр. Понад 10 років у діджеїнгу: від 6-7-годинних сетів у Херсоні до резидентства на KISS FM (з 2020) і релізів на міжнародних лейблах. Переможець DJ Battle в Одесі (2016).</p>
+          <ul><li>Навчає будувати сети, відчувати танцпол і працювати з публікою</li><li>Саундпродюсер</li><li>Курси Standard, Online Standard, Online Full</li></ul>
           <a class="ig" href="https://instagram.com/replaydjschool" target="_blank" rel="noopener">@replaydjschool →</a>
         </div>
       </article>
@@ -439,14 +476,18 @@ footer.main a:hover{color:var(--y)}
     <div>
       <span class="eyebrow">Обладнання</span>
       <h2>Топове залізо — як у клубі</h2>
-      <p class="lead">Вчимося на тому, на чому грають на сценах. Те, що ти освоїш у нас, одразу працює в будь-якому клубі.</p>
+      <p class="lead">Вчимося на тому, на чому грають на сценах. Те, що ти освоїш у нас, одразу працює в будь-якому клубі. Rad Royal — амбасадор Pioneer DJ з 2022 року.</p>
       <div class="gcats">
-        <div><h3>DJ-ОБЛАДНАННЯ</h3><div class="chips"><span class="chip">Pioneer DJ CDJ</span><span class="chip">Pioneer DJ DJM</span><span class="chip">AlphaTheta</span><span class="chip">DDJ-FLX4</span></div></div>
+        <div><h3>DJ-ОБЛАДНАННЯ</h3><div class="chips"><span class="chip">Pioneer DJ CDJ-3000X</span><span class="chip">Pioneer DJ DJM-A9</span><span class="chip">Rekordbox</span></div></div>
         <div><h3>ЗВУК</h3><div class="chips"><span class="chip">Студійні монітори</span><span class="chip">DJ-навушники</span></div></div>
-        <div><h3>ПРОСТІР</h3><div class="chips"><span class="chip">Неонова студія</span><span class="chip">Комфортна зона відпочинку</span></div></div>
+        <div><h3>ПРОСТІР</h3><div class="chips"><span class="chip">Неонова студія в Києві</span><span class="chip">Фортечний тупик, 4</span></div></div>
       </div>
     </div>
-    <div class="studio"><svg viewBox="20 65 655 375" aria-hidden="true"><use href="#gPlay"/><use href="#gUp"/></svg></div>
+    <div class="gallery">
+      <img src="assets/studio-neon.jpg" alt="Неонова студія REPLAY" loading="lazy">
+      <img src="assets/studio-1.jpg" alt="Заняття в студії REPLAY" loading="lazy">
+      <img src="assets/studio-2.jpg" alt="Діджей за пультом у студії" loading="lazy">
+    </div>
   </div>
 </section>
 
@@ -455,12 +496,12 @@ footer.main a:hover{color:var(--y)}
     <div>
       <span class="eyebrow">Оренда студії</span>
       <h2>Практикуйся, коли зручно</h2>
-      <p class="lead">Студія REPLAY відкрита не лише для учнів. Репетируй сет, записуй мікс чи готуйся до виступу на професійному обладнанні.</p>
+      <p class="lead">Студію REPLAY можна орендувати погодинно. Грай на професійному обладнанні, репетируй сет чи готуйся до виступу.</p>
     </div>
     <div class="rbox">
-      <div class="big">500 ₴<span style="font:500 16px Inter;color:var(--mute)"> / година</span></div>
-      <ul><li>CDJ + мікшер + монітори</li><li>Для учнів і випускників — вигідніше</li><li>Запис сету — за домовленістю</li></ul>
-      <a href="#contact" class="btn primary">Забронювати</a>
+      <div class="big">700 ₴<span style="font:500 16px Inter;color:var(--mute)"> / година</span></div>
+      <ul><li>Pioneer DJ CDJ-3000X + мікшер DJM-A9</li><li>Студійні монітори</li><li>Бронювання через Instagram-директ</li></ul>
+      <a href="https://instagram.com/replaydjschool" target="_blank" rel="noopener" class="btn primary">Забронювати</a>
     </div>
   </div>
 </section>
@@ -471,10 +512,10 @@ footer.main a:hover{color:var(--y)}
     <h2>Корисне з нашого Instagram</h2>
     <p class="lead">Короткі розбори, лайфхаки та життя за пультом.</p>
     <div class="reels">
-      <a class="reel" href="https://instagram.com/replaydjschool" target="_blank" rel="noopener"><span class="pl"></span><div><h3>Loop на CDJ</h3><small>Як зациклити трек правильно</small></div></a>
-      <a class="reel" href="https://instagram.com/replaydjschool" target="_blank" rel="noopener"><span class="pl"></span><div><h3>Коли після FLX4 вперше стаєш грати за CDJ</h3><small>Що змінюється</small></div></a>
-      <a class="reel" href="https://instagram.com/replaydjschool" target="_blank" rel="noopener"><span class="pl"></span><div><h3>Перший рік в діджеїнгу</h3><small>Чого очікувати</small></div></a>
-      <a class="reel" href="https://instagram.com/replaydjschool" target="_blank" rel="noopener"><span class="pl"></span><div><h3>Як підготувати флешку до виступу</h3><small>Мінімум помилок на сцені</small></div></a>
+      <a class="reel" href="https://instagram.com/replaydjschool" target="_blank" rel="noopener"><span class="pl"></span><div><h3>Reverse на CDJ</h3><small>3 режими і в чому різниця</small></div></a>
+      <a class="reel" href="https://instagram.com/replaydjschool" target="_blank" rel="noopener"><span class="pl"></span><div><h3>Beat Loop</h3><small>4 способи зациклити трек</small></div></a>
+      <a class="reel" href="https://instagram.com/replaydjschool" target="_blank" rel="noopener"><span class="pl"></span><div><h3>Найбільший страх діджея</h3><small>Забути флешку після виступу</small></div></a>
+      <a class="reel" href="https://instagram.com/replaydjschool" target="_blank" rel="noopener"><span class="pl"></span><div><h3>Що спільного між авто та CDJ?</h3><small>Простими словами про техніку</small></div></a>
     </div>
   </div>
 </section>
@@ -483,11 +524,13 @@ footer.main a:hover{color:var(--y)}
   <div class="wrap">
     <span class="eyebrow">Успіхи учнів</span>
     <h2>Вони натиснули play</h2>
+    <p class="lead">Наші студенти вже грають в ефірі та на сценах Києва.</p>
     <div class="rgrid">
-      <div class="rev"><p>Прийшов <b>без жодного досвіду</b>, а через місяць зіграв свій перший сет на вечірці з друзями.</p><div class="who2">Учень REPLAY · курс Basic</div></div>
-      <div class="rev"><p>Дуже подобається, що <b>багато практики</b> і викладач бачить, де саме ти буксуєш.</p><div class="who2">Учень REPLAY · курс Intro</div></div>
-      <div class="rev"><p>Методика реально працює: <b>за кілька занять</b> зрозумів, як будувати сет і тримати енергію залу.</p><div class="who2">Учень REPLAY · Author Method</div></div>
+      <div class="rev"><p><b>20% студентів</b> за минулий рік потрапили в ефір KISS FM у спеціальному шоу KISS.CLUB.MIX — найбільшої радіостанції України з електронною музикою.</p><div class="who2">REPLAY × KISS FM</div></div>
+      <div class="rev"><p>Мікс нашого випускника <b>@alegarostov</b> звучав на KISS FM і набрав майже 20 000 прослуховувань.</p><div class="who2">Випускник REPLAY</div></div>
+      <div class="rev"><p>Наша учениця <b>@stesha.dj</b> виступила з house-сетом в INKI BAR.</p><div class="who2">Учениця REPLAY</div></div>
     </div>
+    <p class="note">Сотні студентів навчилися за авторською методикою — і майже два роки продовжують грати.</p>
   </div>
 </section>
 
@@ -498,13 +541,13 @@ footer.main a:hover{color:var(--y)}
     <div class="faq">
       <details><summary>Що буде на пробному уроці?</summary><p>Познайомимося, покажемо студію та обладнання, ти спробуєш свої перші мікси за пультом. Урок безкоштовний.</p></details>
       <details><summary>Заняття індивідуальні чи групові?</summary><p>DJ-курси — індивідуальні, щоб викладач працював саме з тобою.</p></details>
-      <details><summary>Скільки триває одне заняття?</summary><p>Зазвичай 1,5–2 години, залежно від курсу.</p></details>
-      <details><summary>Який графік занять?</summary><p>Підбираємо розклад під тебе. Рекомендуємо двічі на тиждень — так прогрес найшвидший.</p></details>
+      <details><summary>Скільки коштує індивідуальне заняття?</summary><p>Годинний урок з Rad Royal — 2 500 ₴, з 2K DJ — 1 700 ₴. При купівлі від 5 і від 10 одиниць діє знижка.</p></details>
+      <details><summary>Який графік занять?</summary><p>Розклад узгоджуємо індивідуально з викладачем — напиши нам в Instagram-директ.</p></details>
       <details><summary>Мені потрібен власний контролер?</summary><p>Ні. Усе обладнання є в школі. Вдома можна практикуватися на простому контролері — підкажемо, який обрати.</p></details>
-      <details><summary>Чи можна платити частинами?</summary><p>Так, обговоримо зручний формат оплати на пробному уроці.</p></details>
-      <details><summary>Чи отримаю я сертифікат?</summary><p>Так, після проходження курсу та відвідування занять.</p></details>
+      <details><summary>Чи можна платити частинами?</summary><p>Умови оплати узгоджуємо індивідуально — напиши нам в директ або запитай на пробному уроці.</p></details>
+      <details><summary>Чи отримаю я сертифікат?</summary><p>Так, після проходження курсу ти отримуєш диплом REPLAY.</p></details>
       <details><summary>Чи зможу виступати після курсу?</summary><p>Так. Готуємо до виступу і допомагаємо з першими кроками на сцені.</p></details>
-      <details><summary>У мене вже є досвід. Що робити?</summary><p>Підберемо індивідуальну програму — Advanced або Author Method.</p></details>
+      <details><summary>У мене вже є досвід. Що робити?</summary><p>Рекомендуємо рівні Full або Complete, а також індивідуальні заняття з Rad Royal чи 2K DJ.</p></details>
       <details><summary>Де ви знаходитесь?</summary><p>Київ, Фортечний тупик, 4.</p></details>
     </div>
   </div>
@@ -539,7 +582,7 @@ footer.main a:hover{color:var(--y)}
         <select name="format"><option>Київ, офлайн</option><option>Онлайн</option></select>
       </label>
       <label>Курс
-        <select name="course"><option>Пробний урок</option><option>Intro</option><option>Basic</option><option>Advanced</option><option>Author Method</option><option>Оренда студії</option></select>
+        <select name="course"><option>Пробний урок</option><option>Standard</option><option>Full</option><option>Complete</option><option>Online</option><option>Індивідуальні заняття</option><option>Оренда студії</option></select>
       </label>
       <label>Основний жанр
         <select name="genre"><option>Techno</option><option>House</option><option>Melodic House &amp; Techno</option><option>Hip-Hop / R&amp;B</option><option>Disco / Funk</option><option>Drum &amp; Bass</option><option>Поки не знаю</option></select>
