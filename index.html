@@ -254,6 +254,17 @@ input:focus,select:focus{outline:2px solid var(--y);border-color:transparent}
 form{position:relative}
 button:disabled{opacity:.6;cursor:wait}
 .cons{font-size:12px;color:var(--mute)}
+.hint{font-size:13px;color:var(--mute);margin-bottom:-4px}
+.opt{font-weight:400;opacity:.7;margin-left:6px}
+.hint.need{margin:-6px 0 0}
+details.more{border:1px solid var(--line);border-radius:12px;background:#0e0e0e;padding:0}
+details.more summary{cursor:pointer;list-style:none;padding:14px 16px;font:600 14px/1.3 Inter;color:var(--fg);display:flex;align-items:center;justify-content:space-between;gap:12px}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary::after{content:"+";font-size:20px;line-height:1;color:var(--y)}
+details.more summary::after{transition:none}
+details.more[open] summary::after{content:"–";transform:none}
+details.more summary small{font-weight:400;color:var(--mute);font-size:12px;margin-left:auto}
+.morebody{display:grid;gap:16px;padding:0 16px 16px}
 @media(max-width:860px){.cwrap{grid-template-columns:1fr}}
 
 footer.main{padding:36px 0;border-top:1px solid var(--line);color:var(--mute);font-size:14px}
@@ -597,17 +608,30 @@ footer.main a:hover{color:var(--y)}
     </div>
     <form id="lead">
       <label>Ім'я<input name="name" required placeholder="Як до тебе звертатися"></label>
-      <label>Телефон або Telegram<input name="contact" required placeholder="+380… або @username"></label>
-      <label>Instagram <span style="opacity:.6;font-weight:400">(необов'язково)</span><input name="instagram" autocomplete="off" autocapitalize="none" placeholder="@нік"></label>
-      <label>Формат
-        <select name="format"><option>Київ, офлайн</option><option>Онлайн</option></select>
+      <label>Instagram
+        <input name="instagram" id="igField" required autocomplete="off" autocapitalize="none" placeholder="@твій_нік">
       </label>
-      <label>Курс
-        <select name="course"><option>Пробний урок</option><option>Standard</option><option>Full</option><option>Complete</option><option>Online</option><option>Індивідуальні заняття</option><option>Оренда студії</option></select>
+      <label>Email
+        <input name="email" id="emField" type="email" required autocomplete="email" placeholder="name@example.com">
       </label>
-      <label>Основний жанр
-        <select name="genre"><option>Techno</option><option>House</option><option>Melodic House &amp; Techno</option><option>Hip-Hop / R&amp;B</option><option>Disco / Funk</option><option>Drum &amp; Bass</option><option>Поки не знаю</option></select>
+      <p class="hint need">Достатньо одного з двох: Instagram або email.</p>
+      <label><span>Телефон або Telegram <span class="opt">необов'язково</span></span>
+        <input name="contact" autocomplete="off" placeholder="+380… або @username">
       </label>
+      <details class="more" id="more">
+        <summary>Курс і формат <small>необов'язково</small></summary>
+        <div class="morebody">
+          <label>Формат
+            <select name="format"><option>Київ, офлайн</option><option>Онлайн</option></select>
+          </label>
+          <label>Курс
+            <select name="course"><option>Пробний урок</option><option>Standard</option><option>Full</option><option>Complete</option><option>Online</option><option>Індивідуальні заняття</option><option>Оренда студії</option></select>
+          </label>
+          <label>Основний жанр
+            <select name="genre"><option>Afro House</option><option>Melodic Techno</option><option>Techno</option><option>House</option><option>Melodic House &amp; Techno</option><option>Hip-Hop / R&amp;B</option><option>Disco / Funk</option><option>Drum &amp; Bass</option><option>Поки не знаю</option></select>
+          </label>
+        </div>
+      </details>
       <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0">
       <button class="btn primary" type="submit">Записатися</button>
       <p class="ok" id="ok">Дякуємо! Ми скоро з тобою зв'яжемося.</p>
@@ -637,6 +661,19 @@ const ok = document.getElementById('ok');
 const err = document.getElementById('err');
 const btn = form.querySelector('button[type=submit]');
 
+// обов'язково хоча б одне: Instagram або email
+const ig = document.getElementById('igField'), em = document.getElementById('emField');
+const syncNeed = () => {
+  const need = !(ig.value.trim() || em.value.trim());
+  ig.required = em.required = need;
+  ig.setCustomValidity(need ? 'Вкажи Instagram або email' : '');
+  em.setCustomValidity(need ? 'Вкажи Instagram або email' : '');
+};
+[ig, em].forEach(el => el.addEventListener('input', syncNeed));
+syncNeed();
+let moreTouched = false;
+form.querySelectorAll('#more select').forEach(el => el.addEventListener('change', () => { moreTouched = true; }));
+
 const send = (url, body) => fetch(url, {
   method: 'POST',
   headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -653,27 +690,30 @@ form.addEventListener('submit', async e => {
   e.preventDefault();
   ok.style.display = err.style.display = 'none';
   const d = Object.fromEntries(new FormData(form));
+  // курс/формат/жанр — лише якщо людина їх справді вибирала (інакше це просто значення за замовчуванням)
+  if (!moreTouched) d.format = d.course = d.genre = '';
   btn.disabled = true; btn.textContent = 'Надсилаємо…';
 
   const jobs = [];
   if (EMAIL_ENDPOINT) jobs.push(send(EMAIL_ENDPOINT, {
-    _subject: `Нова заявка REPLAY: ${d.name} — ${d.course}`,
+    _subject: `Нова заявка REPLAY: ${d.name}`,
     _template: 'table',
     _captcha: 'false',
     _honey: d.website || '',
     "Ім'я": d.name,
-    'Телефон / Telegram': d.contact,
     'Instagram': d.instagram || '—',
-    'Формат': d.format,
-    'Курс': d.course,
-    'Жанр': d.genre,
+    'Email': d.email || '—',
+    'Телефон / Telegram': d.contact || '—',
+    'Формат': d.format || '—',
+    'Курс': d.course || '—',
+    'Жанр': d.genre || '—',
   }));
   if (TELEGRAM_ENDPOINT) jobs.push(send(TELEGRAM_ENDPOINT, d));
 
   if (!jobs.length) console.info('Демо-режим: жоден канал не налаштований', d);
   // успіх, якщо дійшло хоча б в один канал
   const res = jobs.length ? await Promise.allSettled(jobs) : [{ status: 'fulfilled' }];
-  if (res.some(r => r.status === 'fulfilled')) { ok.style.display = 'block'; form.reset(); }
+  if (res.some(r => r.status === 'fulfilled')) { ok.style.display = 'block'; form.reset(); moreTouched = false; syncNeed(); }
   else err.style.display = 'block';
 
   btn.disabled = false; btn.textContent = 'Записатися';
