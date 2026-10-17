@@ -598,6 +598,7 @@ footer.main a:hover{color:var(--y)}
     <form id="lead">
       <label>Ім'я<input name="name" required placeholder="Як до тебе звертатися"></label>
       <label>Телефон або Telegram<input name="contact" required placeholder="+380… або @username"></label>
+      <label>Instagram <span style="opacity:.6;font-weight:400">(необов'язково)</span><input name="instagram" autocomplete="off" autocapitalize="none" placeholder="@нік"></label>
       <label>Формат
         <select name="format"><option>Київ, офлайн</option><option>Онлайн</option></select>
       </label>
@@ -629,7 +630,7 @@ footer.main a:hover{color:var(--y)}
    ВАЖЛИВО: при першій відправці FormSubmit надішле на цю пошту лист з кнопкою "Activate" — натисни її один раз. */
 const EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/replaydjschool@gmail.com';
 /* Опційно: URL Cloudflare Worker-а для дубля в Telegram (див. worker/README.md). Порожній — вимкнено. */
-const TELEGRAM_ENDPOINT = '';
+const TELEGRAM_ENDPOINT = 'https://replay-lead-form.rafttone.workers.dev';
 
 const form = document.getElementById('lead');
 const ok = document.getElementById('ok');
@@ -662,6 +663,7 @@ form.addEventListener('submit', async e => {
     _honey: d.website || '',
     "Ім'я": d.name,
     'Телефон / Telegram': d.contact,
+    'Instagram': d.instagram || '—',
     'Формат': d.format,
     'Курс': d.course,
     'Жанр': d.genre,

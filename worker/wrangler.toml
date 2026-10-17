@@ -3,4 +3,4 @@ main = "telegram-worker.js"
 compatibility_date = "2026-01-01"
 
 [vars]
-ALLOWED_ORIGIN = "*"   # заміни на домен сайту, напр. "https://replaydj.school"
+ALLOWED_ORIGIN = "https://replaydjschool.com"
